@@ -56,3 +56,9 @@ SELECT runner_id,
 FROM runner_orders_cleaned
 where cancellation LIKE ' '
 GROUP BY runner_id;
+
+--4. How many of each type of pizza was delivered?
+SELECT p.pizza_name, COUNT(C.pizza_id) as no_of_pizzas_delivered
+FROM customer_orders_cleaned AS C
+INNER JOIN pizza_runner.pizza_names AS p ON C.pizza_id = p.pizza_id
+GROUP BY p.pizza_name;
