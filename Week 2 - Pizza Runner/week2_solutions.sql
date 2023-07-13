@@ -62,3 +62,11 @@ SELECT p.pizza_name, COUNT(C.pizza_id) as no_of_pizzas_delivered
 FROM customer_orders_cleaned AS C
 INNER JOIN pizza_runner.pizza_names AS p ON C.pizza_id = p.pizza_id
 GROUP BY p.pizza_name;
+
+--5. How many Vegetarian and Meatlovers were ordered by each customer?
+SELECT C.customer_id, p.pizza_name, COUNT(C.pizza_id) as no_of_pizzas_delivered
+FROM customer_orders_cleaned AS C
+INNER JOIN pizza_runner.pizza_names AS p ON C.pizza_id = p.pizza_id
+GROUP BY C.customer_id, p.pizza_name
+ORDER BY C.customer_id ASC;
+
