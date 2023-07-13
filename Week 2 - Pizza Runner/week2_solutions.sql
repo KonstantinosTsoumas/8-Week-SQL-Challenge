@@ -70,3 +70,11 @@ INNER JOIN pizza_runner.pizza_names AS p ON C.pizza_id = p.pizza_id
 GROUP BY C.customer_id, p.pizza_name
 ORDER BY C.customer_id ASC;
 
+--6. What was the maximum number of pizzas delivered in a single order?
+SELECT customer_id,
+	   order_id,
+       COUNT(order_id) AS pizza_count
+FROM customer_orders_cleaned
+GROUP BY customer_id, order_id
+ORDER BY pizza_count DESC
+LIMIT 1;
