@@ -9,11 +9,6 @@
 - [Introduction](#introduction)
 - [Dataset](#dataset)
 - [Entity Relationship Diagram](#entity-relationship)
-- [Project Organization](#project-organization)
-- [Usage and Instructions](#usage-and-instructions)
-- [License](#license)
-- [Contributing](#contributing)
-
 
 <!-- Introduction -->
 # Introduction:
@@ -38,7 +33,6 @@ Pizza_names: Pizza Runner offers just two types of pizzas, Meat Lovers and Veget
 Pizza_recipes: Each pizza_id corresponds to a particular set of standard toppings that are included in the recipe of that specific pizza.
 
 Pizza_toppings: This table contains the list of all available toppings, with each topping_name matched with its corresponding topping_id.
-
 
 <!-- Entity Relationship Diagram -->
 # Entity Relationship Diagram: 
