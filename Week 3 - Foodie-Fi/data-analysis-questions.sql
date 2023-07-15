@@ -12,3 +12,14 @@ INNER JOIN foodie_fi.subscriptions AS s ON s.plan_id = p.plan_id
 WHERE s.plan_id = 0
 GROUP BY month, s.plan_id;
 
+--3.What plan start_date values occur after the year 2020 for our dataset? Show the breakdown by count of events for each plan_name
+SELECT
+	s.plan_id,
+	plan_name,
+    COUNT(*)
+FROM foodie_fi.subscriptions as s
+INNER JOIN foodie_fi.plans AS p ON s.plan_id = p.plan_id
+WHERE DATE(start_date) > DATE '2020-12-31'
+GROUP BY s.plan_id, plan_name
+ORDER BY plan_id ASC;
+
