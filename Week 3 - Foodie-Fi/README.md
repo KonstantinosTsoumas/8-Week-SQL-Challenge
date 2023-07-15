@@ -33,12 +33,46 @@
  
  Pro plans start at $19.90 per month or $199 for an annual subscription. Customers who sign up for an initial 7-day free trial will automatically continue with the Pro monthly subscription plan unless they cancel, switch to the Basic plan, or upgrade to an annual Pro plan during the trial period. If customers decide to cancel their Foodie-Fi service, a churn plan record will be created with a null price, but their plan will remain active until the end of the billing period.
 
+- Short overview: 
+| plan_id |   plan_name    | price |
+|---------|----------------|-------|
+|    0    |     trial      |   0   |
+|    1    | basic monthly  | 9.90  |
+|    2    |  pro monthly   | 19.90 |
+|    3    |  pro annual    |  199  |
+|    4    |     churn      |  null |
+
+
  ### Table 2: Subscriptions
 
  The subscriptions table contains information about customer subscriptions, including the precise date when their specific plan_id becomes active. If customers choose to downgrade from a Pro plan or cancel their subscription, the higher plan will continue until the current billing period is over, and the start_date in the subscriptions table will reflect the date of the actual plan change. 
 
  In cases where customers upgrade from a Basic plan to a Pro or annual Pro plan, the higher plan will take effect immediately. When customers churn, they maintain access until the end of their ongoing billing period, but the start_date technically corresponds to the day they decided to cancel their service.
 
+- Short overview: 
+
+| customer_id | plan_id | start_date |
+|-------------|---------|------------|
+|      1      |    0    | 2020-08-01 |
+|      1      |    1    | 2020-08-08 |
+|      2      |    0    | 2020-09-20 |
+|      2      |    3    | 2020-09-27 |
+|     11      |    0    | 2020-11-19 |
+|     11      |    4    | 2020-11-26 |
+|     13      |    0    | 2020-12-15 |
+|     13      |    1    | 2020-12-22 |
+|     13      |    2    | 2021-03-29 |
+|     15      |    0    | 2020-03-17 |
+|     15      |    2    | 2020-03-24 |
+|     15      |    4    | 2020-04-29 |
+|     16      |    0    | 2020-05-31 |
+|     16      |    1    | 2020-06-07 |
+|     16      |    3    | 2020-10-21 |
+|     18      |    0    | 2020-07-06 |
+|     18      |    2    | 2020-07-13 |
+|     19      |    0    | 2020-06-22 |
+|     19      |    2    | 2020-06-29 |
+|     19      |    3    | 2020-08-29 |
 
 <!-- Entity Relationship Diagram -->
 # Entity Relationship Diagram: 
