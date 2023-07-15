@@ -6,13 +6,15 @@ SELECT
   customer_id, 
   pizza_id, 
   CASE
-	  WHEN exclusions IS null OR exclusions LIKE 'null' THEN ' '
-      WHEN exclusions = 'NaN' THEN ' '
+	  WHEN exclusions IS null OR exclusions LIKE 'null' THEN NULL
+      WHEN exclusions = 'NaN' THEN NULL
+      WHEN exclusions LIKE '' THEN NULL
 	  ELSE exclusions
 	  END AS exclusions,
   CASE
-	  WHEN extras IS NULL or extras LIKE 'null' THEN ' '
-      WHEN extras = 'NaN' THEN ' '
+	  WHEN extras IS NULL or extras LIKE 'null' THEN NULL
+      WHEN extras = 'NaN' THEN NULL
+      WHEN extras LIKE '' THEN NULL
 	  ELSE extras
 	  END AS extras,
 	order_time
@@ -54,7 +56,7 @@ FROM customer_orders_cleaned;
 SELECT runner_id,
 	COUNT(order_id) AS delivered_orders
 FROM runner_orders_cleaned
-where cancellation LIKE ' '
+where distance != 0
 GROUP BY runner_id;
 
 --4. How many of each type of pizza was delivered?
@@ -82,31 +84,30 @@ LIMIT 1;
 --7. For each customer, how many delivered pizzas had at least 1 change and how many had no changes?
 SELECT C.customer_id,
 	SUM(CASE
-        	WHEN (C.exclusions <> ' '
-                  OR C.extras <> ' ') THEN 1
+        	WHEN (C.exclusions IS NOT NULL
+                  OR C.extras IS NOT NULL) THEN 1
         	ELSE 0
         END) AS changed_pizza,
     SUM(CASE
-        	WHEN (C.exclusions = ' '
-                  AND C.extras = ' ') THEN 1
+        	WHEN (C.exclusions IS NULL
+                  AND C.extras IS NULL) THEN 1
         ELSE 0
         END) AS unchanged_pizzas
 FROM customer_orders_cleaned AS C
 INNER JOIN runner_orders_cleaned AS R ON C.order_id = R.order_id
-WHERE R.distance <> ' ' AND CAST(R.distance AS float) != 0
-GROUP BY customer_id
-ORDER BY customer_id ASC;
+WHERE R.distance IS NOT NULL AND CAST(R.distance AS float) != 0
+GROUP BY C.customer_id
+ORDER BY C.customer_id ASC;
 
 --8. How many pizzas were delivered that had both exclusions and extras?
-SELECT * FROM customer_orders_cleaned; 
-SELECT * FROM runner_orders_cleaned;
-
-SELECT 	SUM(CASE
-        	WHEN (C.exclusions IS NOT NULL
-                  AND C.extras IS NOT NULL) THEN 1
+SELECT 	
+	SUM(CASE
+        	WHEN (C.exclusions IS NOT NULL)
+                  AND (C.extras IS NOT NULL) THEN 1
         	ELSE 0
         END) AS changed_pizza
-
 FROM customer_orders_cleaned AS C
 INNER JOIN runner_orders_cleaned AS R ON C.order_id = R.order_id
 WHERE distance >= '1';
+
+
