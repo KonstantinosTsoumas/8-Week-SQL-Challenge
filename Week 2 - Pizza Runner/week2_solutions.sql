@@ -110,4 +110,11 @@ FROM customer_orders_cleaned AS C
 INNER JOIN runner_orders_cleaned AS R ON C.order_id = R.order_id
 WHERE distance >= '1';
 
-
+--9. What was the total volume of pizzas ordered for each hour of the day?
+SELECT
+  EXTRACT(HOUR FROM order_time) AS hour_of_day,
+  COUNT(*) AS total_pizzas_ordered
+FROM customer_orders_cleaned AS C
+  JOIN pizza_runner.pizza_names p ON C.pizza_id = p.pizza_id
+GROUP BY hour_of_day
+ORDER BY hour_of_day;
