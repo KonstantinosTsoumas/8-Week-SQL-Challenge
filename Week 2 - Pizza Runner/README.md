@@ -9,11 +9,6 @@
 - [Introduction](#introduction)
 - [Dataset](#dataset)
 - [Entity Relationship Diagram](#entity-relationship)
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 5822e78fa33b5134d5b7931101f07b9ad725c910
 
 <!-- Introduction -->
 # Introduction:
