@@ -78,3 +78,35 @@ FROM customer_orders_cleaned
 GROUP BY customer_id, order_id
 ORDER BY pizza_count DESC
 LIMIT 1;
+
+--7. For each customer, how many delivered pizzas had at least 1 change and how many had no changes?
+SELECT C.customer_id,
+	SUM(CASE
+        	WHEN (C.exclusions <> ' '
+                  OR C.extras <> ' ') THEN 1
+        	ELSE 0
+        END) AS changed_pizza,
+    SUM(CASE
+        	WHEN (C.exclusions = ' '
+                  AND C.extras = ' ') THEN 1
+        ELSE 0
+        END) AS unchanged_pizzas
+FROM customer_orders_cleaned AS C
+INNER JOIN runner_orders_cleaned AS R ON C.order_id = R.order_id
+WHERE R.distance <> ' ' AND CAST(R.distance AS float) != 0
+GROUP BY customer_id
+ORDER BY customer_id ASC;
+
+--8. How many pizzas were delivered that had both exclusions and extras?
+SELECT * FROM customer_orders_cleaned; 
+SELECT * FROM runner_orders_cleaned;
+
+SELECT 	SUM(CASE
+        	WHEN (C.exclusions IS NOT NULL
+                  AND C.extras IS NOT NULL) THEN 1
+        	ELSE 0
+        END) AS changed_pizza
+
+FROM customer_orders_cleaned AS C
+INNER JOIN runner_orders_cleaned AS R ON C.order_id = R.order_id
+WHERE distance >= '1';
