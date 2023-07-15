@@ -118,3 +118,13 @@ FROM customer_orders_cleaned AS C
   JOIN pizza_runner.pizza_names p ON C.pizza_id = p.pizza_id
 GROUP BY hour_of_day
 ORDER BY hour_of_day;
+
+--10. What was the volume of orders for each day of the week?
+SELECT
+  d.day_name AS day_of_the_week,
+  COUNT(*) AS total_pizzas_ordered
+FROM customer_orders_cleaned AS C
+JOIN pizza_runner.pizza_names p ON C.pizza_id = p.pizza_id
+JOIN day_names d ON d.day_number = EXTRACT(DOW FROM order_time)
+GROUP BY d.day_name, d.day_number
+ORDER BY d.day_number;
