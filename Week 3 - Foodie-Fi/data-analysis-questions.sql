@@ -48,3 +48,28 @@ SELECT
 	ROUND((100.0 * COUNT(customer_id)) / (SELECT COUNT(DISTINCT customer_id) FROM foodie_fi.subscriptions), 0) AS percentage_of_churn
 FROM customers_plans_cte
 WHERE plan_name = 'trial' AND next_plan = 'churn';
+
+--6. What is the number and percentage of customer plans after their initial free trial?
+WITH customer_plans AS (
+  SELECT 
+    customer_id, 
+    plan_id, 
+    LEAD(plan_id) OVER(
+      PARTITION BY customer_id 
+      ORDER BY plan_id) as customer_plans_ids
+  FROM foodie_fi.subscriptions
+)
+
+SELECT 
+  customer_plans_ids AS plan_id, 
+  COUNT(customer_id) AS converted_customers,
+  ROUND(100 * 
+    COUNT(customer_id)::NUMERIC 
+    / (SELECT COUNT(DISTINCT customer_id) 
+      FROM foodie_fi.subscriptions)
+  ,1) AS conversion_percentage
+FROM customer_plans
+WHERE customer_plans_ids IS NOT NULL 
+  AND plan_id = 0
+GROUP BY customer_plans_ids
+ORDER BY customer_plans_ids;
