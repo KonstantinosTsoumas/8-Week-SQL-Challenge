@@ -31,3 +31,20 @@ FROM foodie_fi.subscriptions as s
 INNER JOIN foodie_fi.plans AS p ON s.plan_id = p.plan_id
 WHERE p.plan_id = 4;
 
+--5.How many customers have churned straight after their initial free trial - what percentage is this rounded to the nearest whole number?
+WITH customers_plans_cte AS (
+  SELECT 
+  	s.customer_id,
+  	p.plan_name,
+  	LEAD(p.plan_name) OVER (
+      PARTITION BY s.customer_id
+	  ORDER BY s.start_date) as next_plan
+ FROM foodie_fi.subscriptions AS s
+  INNER JOIN foodie_fi.plans AS p ON s.plan_id = p.plan_id
+)
+
+SELECT 
+	COUNT(customer_id) as churned_customers_count,
+	ROUND((100.0 * COUNT(customer_id)) / (SELECT COUNT(DISTINCT customer_id) FROM foodie_fi.subscriptions), 0) AS percentage_of_churn
+FROM customers_plans_cte
+WHERE plan_name = 'trial' AND next_plan = 'churn';
