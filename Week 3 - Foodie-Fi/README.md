@@ -77,4 +77,4 @@
 <!-- Entity Relationship Diagram -->
 # Entity Relationship Diagram: 
 
-![Diagram](data-model-week3.png "Entity Relationship Diagram")
+![Diagram](data-model-week3.png "Entity Relationship Diagram!")
