@@ -23,3 +23,11 @@ WHERE DATE(start_date) > DATE '2020-12-31'
 GROUP BY s.plan_id, plan_name
 ORDER BY plan_id ASC;
 
+--4. What is the customer count and percentage of customers who have churned rounded to 1 decimal place?
+SELECT
+	COUNT(DISTINCT s.customer_id) AS Customer_count,
+	ROUND (100 * COUNT(s.customer_id) / (SELECT COUNT(DISTINCT customer_id) FROM foodie_fi.subscriptions), 1) AS Churn_percentage
+FROM foodie_fi.subscriptions as s
+INNER JOIN foodie_fi.plans AS p ON s.plan_id = p.plan_id
+WHERE p.plan_id = 4;
+
