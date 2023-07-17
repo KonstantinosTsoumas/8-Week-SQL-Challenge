@@ -100,3 +100,8 @@ FROM upcoming_dates
 WHERE upcoming_date IS NULL
 GROUP BY plan_id;
 
+--8. How many customers have upgraded to an annual plan in 2020?
+SELECT COUNT(DISTINCT customer_id) as upgraded_customers_count
+FROM foodie_fi.subscriptions
+WHERE plan_id = 3 
+	AND start_date <= '2020-12-31'
