@@ -164,3 +164,26 @@ SELECT
 FROM bins
 GROUP BY bucket
 ORDER BY min(days_to_upgrade);
+
+
+--11. How many customers downgraded from a pro monthly to a basic monthly plan in 2020?
+WITH downgraded_plan_cte AS ( 
+ SELECT 
+    s.customer_id,  
+  	p.plan_id,
+    p.plan_name, 
+	  LEAD(p.plan_id) OVER ( 
+      PARTITION BY s.customer_id
+      ORDER BY s.start_date) AS next_plan_id
+  FROM foodie_fi.subscriptions AS s
+  JOIN foodie_fi.plans AS p
+    ON s.plan_id = p.plan_id
+ WHERE DATE_PART('year', start_date) = 2020
+)
+
+SELECT 
+	COUNT(customer_id) AS downgraded_customers_count
+FROM downgraded_plan_cte
+WHERE plan_id = 2 
+	AND next_plan_id = 1;
+    
