@@ -41,3 +41,29 @@ WITH number_of_days_cte AS (
 
 SELECT ROUND(AVG(total_days_in_node),1) AS avg_reallocated_days
 FROM total_number_of_days
+
+
+--5. What is the median, 80th and 95th percentile for this same reallocation days metric for each region?
+WITH durations AS (
+  SELECT 
+    region_id,
+    customer_id, 
+    node_id,
+    end_date - start_date AS duration
+  FROM 
+    data_bank.customer_nodes
+)
+
+SELECT 
+  regions.region_name,
+  PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY duration) AS median_duration,
+  PERCENTILE_CONT(0.8) WITHIN GROUP (ORDER BY duration) AS percentile_80th,
+  PERCENTILE_CONT(0.95) WITHIN GROUP (ORDER BY duration) AS percentile_95th
+FROM 
+  durations
+JOIN 
+  data_bank.regions AS regions
+ON 
+  regions.region_id = durations.region_id
+GROUP BY 
+  regions.region_name;
