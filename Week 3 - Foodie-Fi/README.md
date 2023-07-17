@@ -1,7 +1,9 @@
 <!-- Project Title -->
 <h1 align="center"> Foodie Fi - The third case study</h1>
 
-<img src="logo-week-3.png" alt="isolated" width="500"/> 
+<p align="center">
+  <img src="logo-week-3.png" alt="isolated" width="500"/>
+</p>
 
 <!-- Table of Contents -->
 ## Table of Contents
