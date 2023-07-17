@@ -73,3 +73,30 @@ WHERE customer_plans_ids IS NOT NULL
   AND plan_id = 0
 GROUP BY customer_plans_ids
 ORDER BY customer_plans_ids;
+
+--7. What is the customer count and percentage breakdown of all 5 plan_name values at 2020-12-31?
+WITH upcoming_dates AS (
+  SELECT
+    customer_id,
+    plan_id,
+  	start_date,
+    LEAD(start_date) OVER (
+      PARTITION BY customer_id
+      ORDER BY start_date
+    ) AS upcoming_date
+  FROM foodie_fi.subscriptions
+  WHERE start_date <= '2020-12-31'
+)
+
+SELECT
+	plan_id, 
+	COUNT(DISTINCT customer_id) AS customer_count,
+  ROUND(100.0 * 
+    COUNT(DISTINCT customer_id)
+    / (SELECT COUNT(DISTINCT customer_id) 
+      FROM foodie_fi.subscriptions)
+  ,1) AS customer_percentage
+FROM upcoming_dates
+WHERE upcoming_date IS NULL
+GROUP BY plan_id;
+
