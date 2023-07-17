@@ -129,3 +129,38 @@ FROM trial_plan_customers_cte
 JOIN annual_plan_customers_cte ON trial_plan_customers_cte.customer_id = annual_plan_customers_cte.customer_id;
 
 
+
+--10. Can you further breakdown this average value into 30 day periods (i.e. 0-30 days, 31-60 days etc)
+WITH trial_plan AS (
+  SELECT 
+    customer_id, 
+    start_date AS trial_date
+  FROM foodie_fi.subscriptions
+  WHERE plan_id = 0
+), annual_plan AS (
+  SELECT 
+    customer_id, 
+    start_date AS annual_date
+  FROM foodie_fi.subscriptions
+  WHERE plan_id = 3
+), bins AS (
+  SELECT 
+    annual.customer_id,
+    (annual.annual_date - trial.trial_date) AS days_to_upgrade
+  FROM trial_plan AS trial
+  JOIN annual_plan AS annual
+    ON trial.customer_id = annual.customer_id
+)
+  
+SELECT 
+  CASE 
+    WHEN days_to_upgrade BETWEEN 0 AND 30 THEN '0 - 30 days'
+    WHEN days_to_upgrade BETWEEN 31 AND 60 THEN '31 - 60 days'
+    WHEN days_to_upgrade BETWEEN 61 AND 90 THEN '61 - 90 days'
+    WHEN days_to_upgrade BETWEEN 61 AND 90 THEN '90 - 365 days'
+  ELSE '90 - 365 days' 
+  END AS bucket,
+  COUNT(*) AS num_of_customers
+FROM bins
+GROUP BY bucket
+ORDER BY min(days_to_upgrade);
