@@ -31,6 +31,7 @@
  Pro plans start at $19.90 per month or $199 for an annual subscription. Customers who sign up for an initial 7-day free trial will automatically continue with the Pro monthly subscription plan unless they cancel, switch to the Basic plan, or upgrade to an annual Pro plan during the trial period. If customers decide to cancel their Foodie-Fi service, a churn plan record will be created with a null price, but their plan will remain active until the end of the billing period.
 
 - Short overview: 
+
 | plan_id |   plan_name    | price |
 |---------|----------------|-------|
 |    0    |     trial      |   0   |
