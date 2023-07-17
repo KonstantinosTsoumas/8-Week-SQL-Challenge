@@ -105,3 +105,27 @@ SELECT COUNT(DISTINCT customer_id) as upgraded_customers_count
 FROM foodie_fi.subscriptions
 WHERE plan_id = 3 
 	AND start_date <= '2020-12-31'
+
+
+--9. How many days on average does it take for a customer to an annual plan from the day they join Foodie-Fi?
+WITH trial_plan_customers_cte AS (
+  SELECT 
+    customer_id,
+    start_date AS trial_date
+    FROM foodie_fi.subscriptions
+    WHERE plan_id = 0
+), annual_plan_customers_cte AS (
+    SELECT 
+    customer_id, 
+    start_date AS annual_date
+  FROM foodie_fi.subscriptions
+  WHERE plan_id = 3
+)
+SELECT
+  ROUND (
+    AVG(annual_plan_customers_cte.annual_date - trial_plan_customers_cte.trial_date)
+  ,0) AS avg_upgrade_days
+FROM trial_plan_customers_cte
+JOIN annual_plan_customers_cte ON trial_plan_customers_cte.customer_id = annual_plan_customers_cte.customer_id;
+
+
