@@ -9,11 +9,6 @@
 - [Introduction](#introduction)
 - [Dataset](#dataset)
 - [Entity Relationship Diagram](#entity-relationship)
-- [Project Organization](#project-organization)
-- [Usage and Instructions](#usage-and-instructions)
-- [License](#license)
-- [Contributing](#contributing)
-
 
 <!-- Introduction -->
 # Introduction:
