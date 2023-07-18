@@ -173,5 +173,5 @@ product_summary AS (
 )
 
 SELECT 
-  ROUND(AVG(100.0 * purchases / views), 2) AS avg_view_to_purchases
+  ROUND(AVG(100.0 * purchases / cart_adds), 2) AS avg_view_to_purchases
 FROM product_summary;
