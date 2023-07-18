@@ -36,3 +36,14 @@ SELECT platform,
       SUM(transactions) total_transactions
 FROM clean_weekly_sales
 GROUP BY platform;
+
+--6. What is the percentage of sales for Retail vs Shopify for each month?
+SELECT
+  calendar_year,
+  month_number,
+  ROUND(100 * SUM(CASE WHEN platform = 'Retail' THEN sales ELSE 0 END) / SUM(sales), 2) AS retail_percentage,
+  ROUND(100 * SUM(CASE WHEN platform = 'Shopify' THEN sales ELSE 0 END) / SUM(sales), 2) AS shopify_percentage
+FROM clean_weekly_sales
+GROUP BY calendar_year, month_number
+ORDER BY calendar_year, month_number;
+
