@@ -21,3 +21,12 @@ SELECT calendar_year,
       SUM(transactions)
 FROM clean_weekly_sales
 GROUP BY calendar_year;
+
+--4. What is the total sales for each region for each month?
+SELECT 
+  month_number, 
+  region, 
+  SUM(sales) AS total_sales
+FROM clean_weekly_sales
+GROUP BY month_number, region
+ORDER BY month_number, region;
