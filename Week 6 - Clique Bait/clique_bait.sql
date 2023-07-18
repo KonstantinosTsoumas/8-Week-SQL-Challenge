@@ -142,3 +142,20 @@ SELECT
 FROM product_info
 ORDER BY percentage_purchase_per_view DESC
 LIMIT 1;
+
+-- 4. What is the average conversion rate from view to cart add?
+-- The following query can be added right after the first single big query.
+product_summary AS (
+  SELECT
+    product_id,
+    product_name,
+    product_category,
+    SUM(views) AS views,
+    SUM(cart_adds) AS cart_adds
+  FROM product_info
+  GROUP BY product_id, product_name, product_category
+)
+
+SELECT 
+  ROUND(AVG(100.0 * cart_adds / views), 2) AS avg_view_to_cart
+FROM product_summary;
