@@ -1,11 +1,11 @@
---Using a single SQL query - create a new output table which has the following details:
+-- Using a single SQL query - create a new output table which has the following details:
 
---How many times was each product viewed?
---How many times was each product added to cart?
---How many times was each product added to a cart but not purchased (abandoned)?
---How many times was each product purchased?
+-- How many times was each product viewed?
+-- How many times was each product added to cart?
+-- How many times was each product added to a cart but not purchased (abandoned)?
+-- How many times was each product purchased?
 
---The Single Query answer to the above.
+-- The Single Query answer to the above.
 WITH combined_events AS (
   SELECT
     events.visit_id,
@@ -39,7 +39,7 @@ FROM product_info
 ORDER BY product_id;
 
 
---Additionally, create another table which further aggregates the data for the above points but this time for each product category instead of individual products.
+-- Additionally, create another table which further aggregates the data for the above points but this time for each product category instead of individual products.
 WITH combined_events AS (
   SELECT
     events.visit_id,
@@ -81,3 +81,15 @@ category_info AS (
 SELECT *
 FROM category_info
 ORDER BY product_category;
+
+--Use your 2 new output tables - answer the following questions:
+
+
+-- 1.Which product had the most views, cart adds and purchases?
+-- I will only paste the query here to avoid replication. The following query should be 
+-- embedded into the previous solutions using CTEs.
+SELECT TOP 1 *
+FROM product_info
+ORDER BY views DESC
+LIMIT 1;
+
