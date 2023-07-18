@@ -70,3 +70,18 @@ FROM clean_weekly_sales
 WHERE platform = 'Retail'
 GROUP BY age_band, demographic
 ORDER BY retail_sales DESC;
+
+--9. Can we use the avg_transaction column to find the average transaction size for each year for Retail vs Shopify? If not - how would you calculate it instead?
+SELECT 
+  calendar_year, 
+  platform, 
+  ROUND(AVG(avg_transaction),0) AS avg_transaction_row, 
+  SUM(sales) / sum(transactions) AS avg_transaction_group
+FROM clean_weekly_sales
+GROUP BY calendar_year, platform
+ORDER BY calendar_year, platform;
+
+-- So the difference in this is that the first (avg_transaction_row) computes only the average transaction size by diving 
+-- the sales per row with the number of transactions in that specific column alone. Whereas, the other one, (avg_transaction_group) calculates
+-- the average transaction size by dividing the total sales for the WHOLE dataset by the total number of transactions in the dataset.
+-- This is quite different, indeed.
