@@ -15,3 +15,9 @@ FROM week_number_cte
 EXCEPT
 SELECT week_number
 FROM existing_weeks;
+
+--3. How many total transactions were there for each year in the dataset?
+SELECT calendar_year,
+      SUM(transactions)
+FROM clean_weekly_sales
+GROUP BY calendar_year;
