@@ -41,9 +41,21 @@ GROUP BY platform;
 SELECT
   calendar_year,
   month_number,
-  ROUND(100 * SUM(CASE WHEN platform = 'Retail' THEN sales ELSE 0 END) / SUM(sales), 2) AS retail_percentage,
-  ROUND(100 * SUM(CASE WHEN platform = 'Shopify' THEN sales ELSE 0 END) / SUM(sales), 2) AS shopify_percentage
+  ROUND(100 * MAX(CASE WHEN platform = 'Retail' THEN sales ELSE 0 END) / SUM(sales), 2) AS retail_percentage,
+  ROUND(100 * MAX(CASE WHEN platform = 'Shopify' THEN sales ELSE 0 END) / SUM(sales), 2) AS shopify_percentage
 FROM clean_weekly_sales
 GROUP BY calendar_year, month_number
 ORDER BY calendar_year, month_number;
 
+--7. What is the percentage of sales by demographic for each year in the dataset?
+SELECT
+    calendar_year,
+    ROUND(100 * MAX(CASE WHEN demographic = 'Families' THEN yearly_sales ELSE NULL END) / SUM(yearly_sales), 2) AS families_percentage,
+    ROUND(100 * MAX(CASE WHEN demographic = 'Couples' THEN yearly_sales ELSE NULL END) / SUM(yearly_sales), 2) AS couples_percentage,
+    ROUND(100 * MAX(CASE WHEN demographic = 'Unknown' THEN yearly_sales ELSE NULL END) / SUM(yearly_sales), 2) AS unknown_percentage
+FROM (
+    SELECT calendar_year, demographic, SUM(sales) AS yearly_sales
+    FROM clean_weekly_sales
+    GROUP BY calendar_year, demographic
+) AS demographic_sales
+GROUP BY calendar_year;
