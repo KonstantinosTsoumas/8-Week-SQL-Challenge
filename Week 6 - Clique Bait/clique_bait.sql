@@ -82,14 +82,29 @@ SELECT *
 FROM category_info
 ORDER BY product_category;
 
---Use your 2 new output tables - answer the following questions:
+-- Use your 2 new output tables - answer the following questions:
 
 
 -- 1.Which product had the most views, cart adds and purchases?
 -- I will only paste the query here to avoid replication. The following query should be 
 -- embedded into the previous solutions using CTEs.
-SELECT TOP 1 *
+SELECT *
 FROM product_info
 ORDER BY views DESC
 LIMIT 1;
 
+SELECT *
+FROM product_info
+ORDER BY cart_adds DESC
+LIMIT 1;
+
+SELECT *
+FROM product_info
+ORDER BY purchases DESC
+LIMIT 1;
+
+-- 2. Which product was most likely to be abandoned?
+SELECT *
+FROM product_info
+ORDER BY abandoned DESC
+LIMIT 1;
