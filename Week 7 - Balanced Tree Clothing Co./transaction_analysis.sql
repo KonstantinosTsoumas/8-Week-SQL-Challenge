@@ -12,3 +12,19 @@ SELECT
 FROM balanced_tree.sales
 GROUP BY txn_id
       )product_query ; 
+
+-- 3. What are the 25th, 50th and 75th percentile values for the revenue per transaction?
+WITH revenue_cte AS (
+  SELECT 
+    txn_id, 
+    SUM(price * qty) AS total_revenue
+  FROM balanced_tree.sales
+  GROUP BY txn_id
+)
+
+SELECT
+	PERCENTILE_CONT(0.25) WITHIN GROUP (ORDER BY revenue) AS median_percentile_25th,
+  	PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY revenue) AS median_percentile_50th,
+	PERCENTILE_CONT(0.75) WITHIN GROUP (ORDER BY revenue) AS median_percentile_75th
+FROM revenue_cte;
+
