@@ -54,3 +54,19 @@ SELECT
     ROUND(100 * transactions / (SELECT SUM(transactions) FROM member_transactions_cte)) AS total_percentage
 FROM member_transactions_cte
 GROUP BY member, transactions;
+
+-- 6. What is the average revenue for member transactions and non-member transactions?
+WITH revenue_cte AS (
+  SELECT 
+    member,
+    txn_id, 
+    SUM(price * qty) AS total_revenue
+  FROM balanced_tree.sales
+  GROUP BY member, txn_id
+)
+
+SELECT 
+    member,
+    ROUND(AVG(total_revenue), 2) AS average_revenue
+FROM revenue_cte
+GROUP BY member;
