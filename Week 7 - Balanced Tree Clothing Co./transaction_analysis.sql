@@ -28,3 +28,13 @@ SELECT
 	PERCENTILE_CONT(0.75) WITHIN GROUP (ORDER BY revenue) AS median_percentile_75th
 FROM revenue_cte;
 
+-- 4.What is the average discount value per transaction?
+SELECT ROUND(AVG(revenue_discount)) AS average_discount
+FROM (
+    SELECT 
+        txn_id,
+        SUM(qty*price*discount/100) AS revenue_discount
+        FROM balanced_tree.sales
+        GROUP BY txn_id
+     )	AS revenue_discount_cte
+        
