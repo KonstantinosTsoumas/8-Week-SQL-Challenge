@@ -36,5 +36,21 @@ FROM (
         SUM(qty*price*discount/100) AS revenue_discount
         FROM balanced_tree.sales
         GROUP BY txn_id
-     )	AS revenue_discount_cte
+     )	AS revenue_discount_cte;
         
+
+-- 5. What is the percentage split of all transactions for members vs non-members?
+WITH member_transactions_cte AS (
+    SELECT
+    member,
+    COUNT(DISTINCT txn_id) AS transactions
+  FROM balanced_tree.sales
+  GROUP BY member
+)
+
+SELECT 
+    member,
+    transactions,
+    ROUND(100 * transactions / (SELECT SUM(transactions) FROM member_transactions_cte)) AS total_percentage
+FROM member_transactions_cte
+GROUP BY member, transactions;
