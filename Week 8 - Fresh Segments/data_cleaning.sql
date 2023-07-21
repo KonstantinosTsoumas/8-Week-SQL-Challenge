@@ -45,3 +45,25 @@ SELECT
 FROM fresh_segments.interest_map map
 FULL OUTER JOIN fresh_segments.interest_metrics metrics
   ON map.id::text = metrics.interest_id::text;
+
+-- 5. Summarise the id values in the fresh_segments.interest_map by its total record count in this table
+SELECT 
+  map.id, 
+  interest_name, 
+  COUNT(*)
+FROM fresh_segments.interest_map AS map
+JOIN fresh_segments.interest_metrics AS metrics
+  ON map.id = CAST(metrics.interest_id AS INTEGER)
+GROUP BY map.id, interest_name
+ORDER BY COUNT(*) DESC, map.id;
+
+-- 6. What sort of table join should we perform for our analysis and why? 
+-- Check your logic by checking the rows where interest_id = 21246 in your joined output and include all columns 
+-- from fresh_segments.interest_metrics and all columns from fresh_segments.interest_map except from the id column.
+SELECT *
+FROM fresh_segments.interest_map map
+INNER JOIN fresh_segments.interest_metrics metrics
+  ON map.id::varchar = metrics.interest_id
+WHERE metrics.interest_id = '21246'
+  AND metrics._month IS NOT NULL;
+
