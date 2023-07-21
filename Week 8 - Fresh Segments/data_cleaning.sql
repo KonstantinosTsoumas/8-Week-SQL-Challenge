@@ -35,3 +35,13 @@ WHERE interest_id IS NULL OR month_year IS NULL;
 SELECT
   (COUNT(*) FILTER (WHERE month_year IS NULL) * 100.0 / COUNT(*)) AS null_percentage
 FROM fresh_segments.interest_metrics;
+
+-- 4. How many interest_id values exist in the fresh_segments.interest_metrics table but not in the fresh_segments.interest_map table? What about the other way around?
+SELECT 
+  COUNT(DISTINCT map.id) AS map_id_count,
+  COUNT(DISTINCT metrics.interest_id) AS metrics_id_count,
+  SUM(CASE WHEN map.id IS NULL THEN 1 ELSE 0 END) AS map_missing,
+  SUM(CASE WHEN metrics.interest_id IS NULL THEN 1 ELSE 0 END) AS metric_missing
+FROM fresh_segments.interest_map map
+FULL OUTER JOIN fresh_segments.interest_metrics metrics
+  ON map.id::text = metrics.interest_id::text;
