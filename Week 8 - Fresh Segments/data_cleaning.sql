@@ -67,3 +67,19 @@ INNER JOIN fresh_segments.interest_metrics metrics
 WHERE metrics.interest_id = '21246'
   AND metrics._month IS NOT NULL;
 
+-- 7. Are there any records in your joined table where the month_year value is before the created_at value from the fresh_segments.interest_map table? Do you think these values are valid and why?
+-- Let's check how many records (if so) are out here and then if there are, what values do they take.
+SELECT COUNT(*)
+FROM fresh_segments.interest_metrics metrics
+JOIN fresh_segments.interest_map map
+  ON metrics.interest_id= map.id::varchar
+WHERE metrics.month_year < CAST(map.created_at AS DATE);
+
+-- What are their values?
+SELECT *
+FROM fresh_segments.interest_metrics metrics
+JOIN fresh_segments.interest_map map
+  ON metrics.interest_id= map.id::varchar
+WHERE metrics.month_year < CAST(map.created_at AS DATE);
+
+-- The answer to our question is yes, they are valid. This is because the 'month_year' column contain only values that are set at the first day of the month. 
