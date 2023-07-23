@@ -25,7 +25,7 @@ WITH composion_average_ranking_cte AS (
     metrics.interest_id,
     map.interest_name,
     metrics.month_year,
-    ROUND(CAST(metrics.composition AS NUMERIC) / CAST(metrics.index_value AS NUMERIC), 2) AS avg_composition,
+    ROUND(CAST(metrics.composition AS NUMERIC) / CAST(metrics.index_value AS NUMERIC), 2) AS average_composition,
     DENSE_RANK() OVER(PARTITION BY metrics.month_year ORDER BY metrics.composition / metrics.index_value DESC) AS rank_per_month
   FROM fresh_segments.interest_metrics metrics
   JOIN fresh_segments.interest_map map 
@@ -45,20 +45,20 @@ WITH composion_average_ranking_cte AS (
     metrics.interest_id,
     map.interest_name,
     metrics.month_year,
-	ROUND(CAST(metrics.composition AS NUMERIC) / CAST(metrics.index_value AS NUMERIC), 2) AS avg_composition,
+	ROUND(CAST(metrics.composition AS NUMERIC) / CAST(metrics.index_value AS NUMERIC), 2) AS average_composition,
     DENSE_RANK() OVER(PARTITION BY metrics.month_year ORDER BY metrics.composition / metrics.index_value DESC) AS rank_per_month
   FROM fresh_segments.interest_metrics metrics
   JOIN fresh_segments.interest_map map 
     ON CAST(metrics.interest_id AS INTEGER) = map.id
   WHERE metrics.month_year IS NOT NULL
 ) 
-SELECT month_year, AVG(avg_composition) AS average_composition
+SELECT month_year, AVG(average_composition) AS average_composition
 FROM composion_average_ranking_cte
 WHERE rank_per_month <= 10
 GROUP BY month_year;
 
 -- 4. What is the 3 month rolling average of the max average composition value from September 2018 to August 2019 and include the previous top ranking interests in the same output shown below.
-WITH avg_compositions AS (
+WITH average_composition_cte AS (
   SELECT 
     month_year,
     CAST(interest_id AS INTEGER) AS interest_id,
@@ -75,7 +75,7 @@ moving_avg_compositions AS (
     ROUND(AVG(comp.average_composition_max) OVER(ORDER BY comp.month_year ROWS BETWEEN 2 PRECEDING AND CURRENT ROW), 2) AS three_months_moving_avg,
     LAG(i_map.interest_name) OVER (ORDER BY comp.month_year) || ': ' || CAST(LAG(comp.average_composition_max) OVER (ORDER BY comp.month_year) AS VARCHAR) AS one_month_ago,
     LAG(i_map.interest_name, 2) OVER (ORDER BY comp.month_year) || ': ' || CAST(LAG(comp.average_composition_max, 2) OVER (ORDER BY comp.month_year) AS VARCHAR) AS two_months_ago
-  FROM avg_compositions AS comp 
+  FROM average_composition_cte AS comp 
   JOIN fresh_segments.interest_map i_map 
     ON comp.interest_id = i_map.id
 )
