@@ -56,3 +56,29 @@ SELECT month_year, AVG(avg_composition) AS average_composition
 FROM composion_average_ranking_cte
 WHERE rank_per_month <= 10
 GROUP BY month_year;
+
+-- 4. What is the 3 month rolling average of the max average composition value from September 2018 to August 2019 and include the previous top ranking interests in the same output shown below.
+WITH avg_compositions AS (
+  SELECT 
+    month_year,
+    CAST(interest_id AS INTEGER) AS interest_id,
+    CAST(composition / index_value AS NUMERIC) AS average_composition,
+    CAST(MAX(composition / index_value) OVER(PARTITION BY month_year) AS NUMERIC) AS average_composition_max
+  FROM fresh_segments.interest_metrics
+  WHERE month_year BETWEEN '2018-09-01' AND '2019-08-01'
+),
+moving_avg_compositions AS (
+  SELECT 
+    comp.month_year,
+    i_map.interest_name,
+    comp.average_composition_max AS average_composition_max,
+    ROUND(AVG(comp.average_composition_max) OVER(ORDER BY comp.month_year ROWS BETWEEN 2 PRECEDING AND CURRENT ROW), 2) AS three_months_moving_avg,
+    LAG(i_map.interest_name) OVER (ORDER BY comp.month_year) || ': ' || CAST(LAG(comp.average_composition_max) OVER (ORDER BY comp.month_year) AS VARCHAR) AS one_month_ago,
+    LAG(i_map.interest_name, 2) OVER (ORDER BY comp.month_year) || ': ' || CAST(LAG(comp.average_composition_max, 2) OVER (ORDER BY comp.month_year) AS VARCHAR) AS two_months_ago
+  FROM avg_compositions AS comp 
+  JOIN fresh_segments.interest_map i_map 
+    ON comp.interest_id = i_map.id
+)
+
+SELECT *
+FROM moving_avg_compositions;
