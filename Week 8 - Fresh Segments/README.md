@@ -32,6 +32,7 @@ This table presents data on aggregated interest metrics for a significant client
 Each entry in the table corresponds to the performance of a particular interest_id, which is determined by analyzing the clicks and interactions of the client's customer base with targeted advertising content related to that specific interest.
 
 - Short overview: 
+
 | _month | _year | month_year | interest_id | composition | index_value | ranking | percentile_ranking |
 |--------|-------|------------|-------------|-------------|-------------|---------|-------------------|
 | 7      | 2018  | 07-2018    | 32486       | 11.89       | 6.19        | 1       | 99.86             |
