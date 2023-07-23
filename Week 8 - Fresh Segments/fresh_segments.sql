@@ -82,3 +82,7 @@ moving_avg_compositions AS (
 
 SELECT *
 FROM moving_avg_compositions;
+
+-- 5. Provide a possible reason why the max average composition might change from month to month? Could it signal something is not quite right with the overall business model for Fresh Segments?
+-- If we pay attention to the top interest names, it's evident that there are services related to travelling.
+-- This lead us to believe that we're dealing with highly seasonal matters and that Fresh Segments is relying on this.
