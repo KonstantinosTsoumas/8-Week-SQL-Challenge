@@ -15,8 +15,26 @@ SELECT
 FROM dannys_diner.sales 
 GROUP BY customer_id;
 
-
 -- 3. What was the first item from the menu purchased by each customer?
+WITH rank_cte AS (
+  SELECT 
+    customer_id,
+    product_id,
+    order_date,
+    DENSE_RANK() OVER(PARTITION BY customer_id ORDER BY order_date) AS rank
+  FROM dannys_diner.sales
+)
+
+SELECT 
+  rank_cte.customer_id,
+  rank_cte.order_date,
+  menu.product_name
+FROM rank_cte
+JOIN dannys_diner.menu 
+  ON rank_cte.product_id = menu.product_id
+WHERE rank_cte.rank = 1
+GROUP BY rank_cte.customer_id, rank_cte.order_date, menu.product_name;
+
 -- 4. What is the most purchased item on the menu and how many times was it purchased by all customers?
 -- 5. Which item was the most popular for each customer?
 -- 6. Which item was purchased first by the customer after they became a member?
