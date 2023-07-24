@@ -90,6 +90,29 @@ FROM order_after_member
 WHERE rank = 1;
 
 -- 7. Which item was purchased just before the customer became a member?
+WITH order_after_member AS (
+  SELECT 
+    sales.customer_id,
+    menu.product_name,
+    sales.order_date,
+    members.join_date,
+    DENSE_RANK() OVER(PARTITION BY sales.customer_id ORDER BY sales.order_date) AS rank
+  FROM dannys_diner.sales
+  JOIN dannys_diner.members
+    ON sales.customer_id = members.customer_id
+  JOIN dannys_diner.menu 
+    ON sales.product_id = menu.product_id
+  WHERE sales.order_date < members.join_date
+)
+
+SELECT 
+  customer_id,
+  product_name,
+  order_date,
+  join_date
+FROM order_after_member
+WHERE rank = 1;
+
 -- 8. What is the total items and amount spent for each member before they became a member?
 -- 9. If each $1 spent equates to 10 points and sushi has a 2x points multiplier - how many points would each customer have?
 -- 10. In the first week after a customer joins the program (including their join date) they earn 2x points on all items, not just sushi - how many points do customer A and B have at the end of January?
