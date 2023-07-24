@@ -146,3 +146,26 @@ GROUP BY sales.customer_id
 ORDER BY customer_id;
 
 -- 10. In the first week after a customer joins the program (including their join date) they earn 2x points on all items, not just sushi - how many points do customer A and B have at the end of January?
+WITH dates_cte AS (
+  SELECT 
+    customer_id, 
+    join_date,
+    join_date + INTERVAL '6 day' AS valid_date, 
+    ('2021-01-31'::date) AS last_date
+  FROM dannys_diner.members
+)
+
+SELECT 
+  dates.customer_id,
+  SUM(CASE 
+      	WHEN sales.order_date BETWEEN dates.join_date AND dates.valid_date THEN menu.price*20
+      	WHEN menu.product_name = 'sushi' THEN menu.price*20
+      ELSE menu.price*10 END) AS total_points
+FROM dannys_diner.sales
+JOIN dates_cte as dates 
+  ON sales.customer_id = dates.customer_id
+JOIN dannys_diner.menu 
+  ON sales.product_id = menu.product_id
+WHERE sales.order_date <= dates.last_date
+GROUP BY dates.customer_id;
+
