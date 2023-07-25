@@ -59,3 +59,16 @@ Danny was sold on the idea, but he knew that pizza alone was not going to help h
 Danny started by recruiting “runners” to deliver fresh pizza from Pizza Runner Headquarters (otherwise known as Danny’s house) and also maxed out his credit card to pay freelance developers to build a mobile app to accept orders from customers.
 
 * Check out the case study [here](https://8weeksqlchallenge.com/case-study-2/).
+
+---
+## [Case Study #3 - Foodie-Fi](https://github.com/KonstantinosTsoumas/8-Week-SQL-Challenge/tree/main/Week%203%20-%20Foodie-Fi)
+
+<p align="center">
+<img src="Week 3 - Foodie-Fi/logo-week-3.png" align="center" width="300" height="300" >
+
+Danny identified a gap in the market and wanted to establish a new streaming service focused solely on food-related content, similar to Netflix but dedicated to cooking shows. In 2020, he assembled a team of talented individuals to launch his startup called Foodie-Fi.
+
+They introduced monthly and annual subscription options, providing customers with unlimited on-demand access to exclusive food videos from around the world. Danny's approach to building Foodie-Fi was data-driven, ensuring that all future investment decisions and new features were based on data. This case study explores the utilization of subscription-style digital data to address crucial business questions.
+
+* Check out the case study [here](https://8weeksqlchallenge.com/case-study-3/).
+
