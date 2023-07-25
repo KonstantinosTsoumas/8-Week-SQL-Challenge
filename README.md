@@ -20,11 +20,10 @@ Propose a [PR](https://https://github.com/KonstantinosTsoumas/8-Week-SQL-Challen
     <li><a href="#Case Study #6 - Clique Bait">Case Study 6</a></li>
     <li><a href="#Case Study #7 - Balanced Tree Clothing Co.">Case Study 7</a></li>
     <li><a href="#Case Study #8 - Fresh Segments">Case Study 8</a></li>
-    <li><a href="#Contribution">Contribute</a></li>
+    <li><a href="#Contribute">Contribute</a></li>
     <li><a href="#Contact">Contact</a></li>
   </ol>
 </details>
-
 
 ---
 <!--Case Study 1-->
@@ -166,3 +165,22 @@ Danny has sought your help in examining the aggregated metrics for a sample clie
 * Check out the case study [here](https://8weeksqlchallenge.com/case-study-8/).
  
  ### [Case Study #8 - Fresh Segments. - Solution ](https://github.com/KonstantinosTsoumas/8-Week-SQL-Challenge/tree/main/Week%208%20-%20Fresh%20Segments)
+
+<!--Contribute-->
+## Contribute
+
+- Clone [this](https://github.com/KonstantinosTsoumas/8-Week-SQL-Challenge) repository:
+
+```bash
+git clone https://github.com/KonstantinosTsoumas/8-Week-SQL-Challenge
+```
+
+- Contribute by making changes [PR](https://github.com/KonstantinosTsoumas/8-Week-SQL-Challenge/pulls).
+
+## Contact
+
+Konstantinos Tsoumas - [LinkedIn](https://www.linkedin.com/in/konstantinostsoumas/)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!--License-->
