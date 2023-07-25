@@ -30,7 +30,7 @@ Propose a [PR](https://https://github.com/KonstantinosTsoumas/8-Week-SQL-Challen
 </details>
 
 ---
-## 🍜 Case Study #1 - Danny's Diner
+## [Case Study #1 - Danny's Diner](https://github.com/KonstantinosTsoumas/8-Week-SQL-Challenge/tree/main/Week%201%20-%20Danny's%20Diner)
 <p align="center">
 <img src="Week 1 - Danny's Diner/logo-week1.png" align="center" width="300" height="300" >
 
@@ -47,7 +47,8 @@ For privacy reasons, Danny has given a sample of his overall customer data. Neve
 * Check out the case study [here](https://8weeksqlchallenge.com/case-study-1/). 
 
 ---
-## 🍕 Case Study #2 - Pizza Runner
+## [Case Study #2 - Pizza Runner](https://github.com/KonstantinosTsoumas/8-Week-SQL-Challenge/tree/main/Week%202%20-%20Pizza%20Runner)
+
 <p align="center">
 <img src="Week 2 - Pizza Runner/logo-week2.png" align="center" width="300" height="300" >
 
