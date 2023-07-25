@@ -1,5 +1,11 @@
 # The 8 week SQL Challenge!
 
+<a name="readme-top"></a>
+<br />
+<div align="left">
+  <a href="https://github.com/KonstantinosTsoumas/8-Week-SQL-Challenge">
+  </a>
+
 This challenge is an initiative from Danny Ma to support all data professionals do some exercises with SQL and for people that are starting on their SQL learning journey. I thought this is a very nice initiative it and why not giving it a try.
 
 Let us unlock the mysteries of JOINs, dance with aggregates, and summon the arcane powers of filtering and sorting. Fear not, dear beginners, for this enchanting quest is a gateway to knowledge and growth!
