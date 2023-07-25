@@ -148,3 +148,21 @@ Danny, the Chief Executive Officer of this chic fashion firm, has requested your
 * Check out the case study [here](https://8weeksqlchallenge.com/case-study-7/).
 
 ### [Case Study #7 - Balanced Tree Clothing Co. - Solution ](https://github.com/KonstantinosTsoumas/8-Week-SQL-Challenge/tree/main/Week%207%20-%20Balanced%20Tree%20Clothing%20Co.)
+
+<!--Case Study 8-->
+<h2 id="Case Study #8 - Fresh Segments.">Case Study 8</h2>
+
+<p align="center">
+<img src="Week 8 - Fresh Segments/logo-week8.png" align="center" width="300" height="300" >
+
+Danny established Fresh Segments, a digital marketing agency specializing in assisting businesses in understanding trends in online ad click behavior specific to their individual customer base.
+
+The process involves clients sharing their customer lists with the Fresh Segments team. The team then compiles interest metrics from these lists and creates a comprehensive dataset for further analysis.
+
+This dataset includes information about the composition and rankings of various interests for each client. It shows the percentage of each client's customer list that engaged with online content related to different interests on a monthly basis.
+
+Danny has sought your help in examining the aggregated metrics for a sample client and providing valuable insights regarding the customer list and their specific interests.
+
+* Check out the case study [here](https://8weeksqlchallenge.com/case-study-8/).
+ 
+ ### [Case Study #8 - Fresh Segments. - Solution ](https://github.com/KonstantinosTsoumas/8-Week-SQL-Challenge/tree/main/Week%208%20-%20Fresh%20Segments)
