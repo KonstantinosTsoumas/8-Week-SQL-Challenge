@@ -111,3 +111,15 @@ Which platform, region, segment and customer types were the most impacted by thi
 What can we do about future introduction of similar sustainability updates to the business to minimise impact on sales?
 
 * Check out the case study [here](https://8weeksqlchallenge.com/case-study-5/).
+
+---
+## [Case Study #6 - Clique Bait](https://github.com/KonstantinosTsoumas/8-Week-SQL-Challenge/tree/main/Week%206%20-%20Clique%20Bait)
+
+<p align="center">
+<img src="Week 6 - Clique Bait/logo-week6.png" align="center" width="300" height="300" >
+
+Clique Bait isn't your typical online seafood retailer - it's the brainchild of founder and CEO, Danny, who leverages his experience from working in digital data analytics, aiming to bring new insights into the seafood sector!
+
+ For this case study, the task is to help Danny's ambition by assessing his dataset. Your objective is to conjure inventive methods to determine the funnel dropout rates for the Clique Bait online store.
+
+* Check out the case study [here](https://8weeksqlchallenge.com/case-study-6/).
