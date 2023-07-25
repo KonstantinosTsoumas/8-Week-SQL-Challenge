@@ -12,14 +12,10 @@ Propose a [PR](https://https://github.com/KonstantinosTsoumas/8-Week-SQL-Challen
 <details>
   <summary>Table of Contents</summary>
   <ol>
-    <li>
-      <a href="#Case Study #1 - Danny's Diner">Case Study 1</a>
-    </li>
-    <li>
-      <a href="#Case Study #2 - Pizza Runner">Case Study 2</a>
-        <li><a href="#Case Study #3 - Foodie-Fi">Case Study 3</a></li>
-        <li><a href="#Case Study #4 - Data Bank">Case Study 4</a></li>
-    </li>
+    <li><a href="#Case Study #1 - Danny's Diner">Case Study 1</a></li>
+    <li><a href="#Case Study #2 - Pizza Runner">Case Study 2</a></li>
+    <li><a href="#Case Study #3 - Foodie-Fi">Case Study 3</a></li>
+    <li><a href="#Case Study #4 - Data Bank">Case Study 4</a></li>
     <li><a href="#Case Study #5 - Data Mart">Case Study 5</a></li>
     <li><a href="#Case Study #6 - Clique Bait">Case Study 6</a></li>
     <li><a href="#Case Study #7 - Balanced Tree Clothing Co.">Case Study 7</a></li>
@@ -29,8 +25,11 @@ Propose a [PR](https://https://github.com/KonstantinosTsoumas/8-Week-SQL-Challen
   </ol>
 </details>
 
+
 ---
-## [Case Study #1 - Danny's Diner](https://github.com/KonstantinosTsoumas/8-Week-SQL-Challenge/tree/main/Week%201%20-%20Danny's%20Diner)
+<!--Case Study 1-->
+<h2 id="Case Study #1 - Danny's Diner">Case Study 1</h2>
+
 <p align="center">
 <img src="Week 1 - Danny's Diner/logo-week1.png" align="center" width="300" height="300" >
 
@@ -46,8 +45,10 @@ For privacy reasons, Danny has given a sample of his overall customer data. Neve
 
 * Check out the case study [here](https://8weeksqlchallenge.com/case-study-1/). 
 
----
-## [Case Study #2 - Pizza Runner](https://github.com/KonstantinosTsoumas/8-Week-SQL-Challenge/tree/main/Week%202%20-%20Pizza%20Runner)
+### [Case Study #1 - Danny's Diner - Solution](https://github.com/KonstantinosTsoumas/8-Week-SQL-Challenge/tree/main/Week%201%20-%20Danny's%20Diner)
+
+<!--Case Study 2-->
+<h2 id="Case Study #2 - Pizza Runner">Case Study 2</h2>
 
 <p align="center">
 <img src="Week 2 - Pizza Runner/logo-week2.png" align="center" width="300" height="300" >
@@ -60,8 +61,10 @@ Danny started by recruiting “runners” to deliver fresh pizza from Pizza Runn
 
 * Check out the case study [here](https://8weeksqlchallenge.com/case-study-2/).
 
----
-## [Case Study #3 - Foodie-Fi](https://github.com/KonstantinosTsoumas/8-Week-SQL-Challenge/tree/main/Week%203%20-%20Foodie-Fi)
+### [Case Study #2 - Pizza Runner - Solution](https://github.com/KonstantinosTsoumas/8-Week-SQL-Challenge/tree/main/Week%202%20-%20Pizza%20Runner)
+
+<!--Case Study 3-->
+<h2 id="Case Study #3 - Foodie-Fi">Case Study 3</h2>
 
 <p align="center">
 <img src="Week 3 - Foodie-Fi/logo-week-3.png" align="center" width="300" height="300" >
@@ -72,8 +75,10 @@ They introduced monthly and annual subscription options, providing customers wit
 
 * Check out the case study [here](https://8weeksqlchallenge.com/case-study-3/).
 
----
-## [Case Study #4 - Data Bank](https://github.com/KonstantinosTsoumas/8-Week-SQL-Challenge/tree/main/Week%204%20-%20Data%20Bank)
+### [Case Study #3 - Foodie-Fi - Solution](https://github.com/KonstantinosTsoumas/8-Week-SQL-Challenge/tree/main/Week%203%20-%20Foodie-Fi)
+
+<!--Case Study 4-->
+<h2 id="Case Study #4 - Data Bank">Case Study 4</h2>
 
 <p align="center">
 <img src="Week 4 - Data Bank/logo-week4.png" align="center" width="300" height="300" >
@@ -92,8 +97,10 @@ This case study centers on computing key metrics, fostering growth, and enabling
 
 * Check out the case study [here](https://8weeksqlchallenge.com/case-study-4/).
 
----
-## [Case Study #5 - Data Mart](https://github.com/KonstantinosTsoumas/8-Week-SQL-Challenge/tree/main/Week%204%20-%20Data%20Bank)
+### [Case Study #4 - Data Bank - Solution](https://github.com/KonstantinosTsoumas/8-Week-SQL-Challenge/tree/main/Week%204%20-%20Data%20Bank)
+
+<!--Case Study 5-->
+<h2 id="Case Study #5 - Data Mart">Case Study 5</h2>
 
 <p align="center">
 <img src="Week 5 - Data Mart/logo-week5.png" align="center" width="300" height="300" >
@@ -112,8 +119,10 @@ What can we do about future introduction of similar sustainability updates to th
 
 * Check out the case study [here](https://8weeksqlchallenge.com/case-study-5/).
 
----
-## [Case Study #6 - Clique Bait](https://github.com/KonstantinosTsoumas/8-Week-SQL-Challenge/tree/main/Week%206%20-%20Clique%20Bait)
+### [Case Study #5 - Data Mart - Solution](https://github.com/KonstantinosTsoumas/8-Week-SQL-Challenge/tree/main/Week%204%20-%20Data%20Bank)
+
+<!--Case Study 6-->
+<h2 id="Case Study #6 - Clique Bait">Case Study 6</h2>
 
 <p align="center">
 <img src="Week 6 - Clique Bait/logo-week6.png" align="center" width="300" height="300" >
@@ -123,3 +132,19 @@ Clique Bait isn't your typical online seafood retailer - it's the brainchild of 
  For this case study, the task is to help Danny's ambition by assessing his dataset. Your objective is to conjure inventive methods to determine the funnel dropout rates for the Clique Bait online store.
 
 * Check out the case study [here](https://8weeksqlchallenge.com/case-study-6/).
+
+### [Case Study #6 - Clique Bait - Solution](https://github.com/KonstantinosTsoumas/8-Week-SQL-Challenge/tree/main/Week%206%20-%20Clique%20Bait)
+
+<!--Case Study 7-->
+<h2 id="Case Study #7 - Balanced Tree Clothing Co.">Case Study 7</h2>
+
+<p align="center">
+<img src="Week 7 - Balanced Tree Clothing Co./logo-week7.png" align="center" width="300" height="300" >
+
+The Balanced Tree Clothing Company takes immense pride in delivering a finely tuned selection of apparel and lifestyle products for the contemporary explorer.
+
+Danny, the Chief Executive Officer of this chic fashion firm, has requested your support in helping the merchandise team examine their sales data and create a fundamental financial analysis report to disseminate among the broader organization.
+
+* Check out the case study [here](https://8weeksqlchallenge.com/case-study-7/).
+
+### [Case Study #7 - Balanced Tree Clothing Co. - Solution ](https://github.com/KonstantinosTsoumas/8-Week-SQL-Challenge/tree/main/Week%207%20-%20Balanced%20Tree%20Clothing%20Co.)
