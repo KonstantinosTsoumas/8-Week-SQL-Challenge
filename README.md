@@ -72,3 +72,23 @@ They introduced monthly and annual subscription options, providing customers wit
 
 * Check out the case study [here](https://8weeksqlchallenge.com/case-study-3/).
 
+---
+## [Case Study #4 - Data Bank](https://github.com/KonstantinosTsoumas/8-Week-SQL-Challenge/tree/main/Week%204%20-%20Data%20Bank)
+
+<p align="center">
+<img src="Week 4 - Data Bank/logo-week4.png" align="center" width="300" height="300" >
+
+A fresh concept in the financial sector called Neo-Banks is emerging, characterized by fully digital, new-age banks that have no physical branches.
+
+Danny, inspired by this development, envisions a fusion of these modern banks, cryptocurrency, and the realm of data. Thus, he launches a revolutionary initiative known as Data Bank!
+
+Functioning much like any other online bank, Data Bank isn't merely a platform for banking transactions. It's also home to the globe's most secure distributed data storage platform!
+
+Customers receive cloud storage space, which is determined by the amount of money held in their accounts. However, there are some intriguing twists to this business model, which is where the Data Bank team needs your expertise!
+
+The management at Data Bank aims to expand their overall customer base and needs assistance in monitoring the data storage requirements of their customers.
+
+This case study centers on computing key metrics, fostering growth, and enabling the company to intelligently analyze their data. This will facilitate more accurate forecasting and strategic planning for their future progress!
+
+* Check out the case study [here](https://8weeksqlchallenge.com/case-study-4/).
+
