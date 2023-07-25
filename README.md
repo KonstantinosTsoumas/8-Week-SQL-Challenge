@@ -18,7 +18,7 @@ Propose a [PR](https://https://github.com/KonstantinosTsoumas/8-Week-SQL-Challen
 <details>
   <summary>Table of Contents</summary>
   <ol>
-    <li><a href="#Case Study #1 - Danny's Diner">Case Study 1</a></li>
+    <li><a href="#Case Study 1">Case Study 1</a></li>
     <li><a href="#Case Study #2 - Pizza Runner">Case Study 2</a></li>
     <li><a href="#Case Study #3 - Foodie-Fi">Case Study 3</a></li>
     <li><a href="#Case Study #4 - Data Bank">Case Study 4</a></li>
@@ -33,7 +33,7 @@ Propose a [PR](https://https://github.com/KonstantinosTsoumas/8-Week-SQL-Challen
 
 ---
 <!--Case Study 1-->
-<h2 id="Case Study #1 - Danny's Diner">Case Study 1</h2>
+<h2 id="Case Study 1">Case Study 1</h2>
 
 <p align="center">
 <img src="Week 1 - Danny's Diner/logo-week1.png" align="center" width="300" height="300" >
